@@ -8,12 +8,8 @@
 
 2. **克隆到本地**：
    ```
-<<<<<<< HEAD
    git clone https://github.com/bozoyan/bozoyan-home.git
-=======
-   git clone https://github.com/your-username/muse-home.git
->>>>>>> 23674cbcbeef8bcba6b86da598fbfb4c74f4c873
-   cd muse-home
+   cd bozoyan-home
    ```
 
 3. **创建分支**：
@@ -89,10 +85,6 @@
 如有任何问题，可以通过以下方式联系我们：
 
 - 提交 Issue
-<<<<<<< HEAD
 - 发送邮件至 [201782@qq.com](mailto:201782@qq.com)
-=======
-- 发送邮件至 [3059233286@qq.com](mailto:3059233286@qq.com)
->>>>>>> 23674cbcbeef8bcba6b86da598fbfb4c74f4c873
 
 非常感谢您的贡献！ 
