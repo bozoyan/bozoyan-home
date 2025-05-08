@@ -1,0 +1,56 @@
+/* 重置浏览器默认样式 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* 图标容器基本样式 */
+.widget-icon {
+    width: 40px !important;
+    height: 40px !important;
+    border-radius: 12px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    margin-right: 1rem !important;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* 图标本身的样式 */
+.widget-icon i {
+    color: white !important;
+    font-size: 18px !important;
+}
+
+/* 关于我图标 - 蓝色 */
+.about-icon {
+    background: linear-gradient(135deg, #4f46e5, #3b82f6) !important;
+}
+
+/* 核心理念图标 - 紫色 */
+.philosophy-icon {
+    background: linear-gradient(135deg, #8b5cf6, #6d28d9) !important;
+}
+
+/* 联系方式图标 - 绿色 */
+.contact-icon {
+    background: linear-gradient(135deg, #10b981, #059669) !important;
+}
+
+/* 技术能力图标 - 橙色 */
+.skills-widget .widget-icon {
+    background: linear-gradient(135deg, #f59e0b, #d97706) !important;
+}
+
+/* 项目经验图标 - 红色 */
+.projects-widget .widget-icon {
+    background: linear-gradient(135deg, #ef4444, #dc2626) !important;
+}
+
+.icon-text {
+    color: white !important;
+    font-size: 18px !important;
+    font-weight: bold !important;
+    text-align: center !important;
+}

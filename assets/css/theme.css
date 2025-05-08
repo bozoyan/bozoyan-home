@@ -1,0 +1,55 @@
+/**
+ * 缪斯个人主页 主题样式文件
+ * 包含网站的全局颜色变量
+ */
+
+:root {
+    /* 基础颜色变量 - 亮色主题 */
+    --primary: #3b82f6;
+    --primary-light: #60a5fa;
+    --primary-dark: #2563eb;
+    --background: #f5f8fc;
+    --card-background: #ffffff;
+    --text: #1f2937;
+    --text-light: #6b7280;
+    --accent-green: #10b981;
+    --accent-purple: #8b5cf6;
+    --accent-orange: #f59e0b;
+    
+    /* 衍生颜色 */
+    --shadow-color: rgba(0, 0, 0, 0.08);
+    --overlay-bg: rgba(255, 255, 255, 0.8);
+    --widget-border: #e5e7eb;
+    --modal-bg: rgba(0, 0, 0, 0.5);
+    --widget-hover: #f3f4f6;
+}
+
+/* 主题过渡动画 */
+body {
+    transition: background-color 0.3s ease;
+}
+
+.card, .widget, .widget-container, .modal-content {
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+/* 鼠标跟随效果 */
+.cursor {
+    position: fixed;
+    background: var(--primary-light);
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    opacity: 0.6;
+    pointer-events: none;
+    z-index: 9999;
+    transform: translate(-50%, -50%);
+    mix-blend-mode: screen;
+    filter: blur(4px);
+    animation: fadeOut 1s forwards;
+}
+
+@keyframes fadeOut {
+    0% { opacity: 0.6; transform: translate(-50%, -50%) scale(1); }
+    100% { opacity: 0; transform: translate(-50%, -50%) scale(3); }
+}
