@@ -1,0 +1,528 @@
+/**
+ * 缪斯个人主页 响应式设计样式
+ * 根据不同屏幕尺寸优化显示效果
+ * 移动端优先设计
+ */
+
+/* 全局移动端优化 */
+html {
+    font-size: 16px; /* 基础字体大小 */
+}
+
+/* 平板设备样式 (768px - 1024px) */
+@media screen and (max-width: 1024px) {
+    .container {
+        padding: 20px;
+    }
+    
+    .card {
+        max-width: 100%;
+        padding: 30px;
+    }
+    
+    .widget-container {
+        width: 100%;
+    }
+    
+    .side-decoration {
+        display: none;
+    }
+    
+    .tech-stack {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+/* 移动设备样式 (< 768px) */
+@media screen and (max-width: 768px) {
+    body {
+        font-size: 14px;
+    }
+    
+    .container {
+        padding: 10px;
+    }
+    
+    .card {
+        padding: 20px;
+        border-radius: 15px;
+    }
+    
+    .profile {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .profile .avatar {
+        margin: 0 auto 15px;
+    }
+    
+    .decoration-lines {
+        display: none;
+    }
+    
+    .widget {
+        padding: 15px;
+    }
+    
+    .widget-header h2 {
+        font-size: 1.2rem;
+    }
+    
+    .tech-stack {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+    }
+    
+    .tech-item, .skill-item {
+        font-size: 0.8rem;
+        padding: 8px;
+    }
+    
+    .project-item {
+        flex-direction: column;
+    }
+    
+    .project-icon {
+        margin-bottom: 10px;
+        margin-right: 0;
+    }
+    
+    .qr-code-container {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+    
+    .qr-code-item {
+        margin: 0 0 15px 0;
+        width: 100%;
+    }
+    
+    .qr-code {
+        max-width: 200px;
+        max-height: 200px;
+    }
+    
+    .close {
+        top: 15px;
+        right: 15px;
+        width: 35px;
+        height: 35px;
+        font-size: 1.2rem;
+    }
+    
+    .modal-header {
+        margin-bottom: 15px;
+    }
+    
+    .modal-header h3 {
+        font-size: 1.3rem;
+    }
+    
+    .social-link {
+        padding: 12px;
+    }
+    
+    .footer {
+        padding: 15px;
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .beian {
+        margin-top: 10px;
+    }
+    
+    .social-links {
+        flex-direction: column;
+    }
+    
+    .modal {
+        padding: 10px 0 80px 0;
+    }
+    
+    .modal-content {
+        width: 92%;
+        max-width: 400px;
+        padding: 20px;
+        margin: 15px auto 80px auto;
+    }
+    
+    .social-links {
+        margin-bottom: 10px;
+    }
+}
+
+/* 小型移动设备样式 (< 480px) */
+@media screen and (max-width: 480px) {
+    html {
+        font-size: 15px; /* 稍微缩小基础字体大小 */
+    }
+    
+    body {
+        margin: 0;
+        padding: 0;
+        overflow-x: hidden;
+    }
+    
+    .container {
+        padding: 8px;
+        margin: 0.5rem auto;
+    }
+    
+    .card {
+        border-radius: 16px;
+        padding: 16px;
+        margin-bottom: 10px;
+    }
+    
+    .profile {
+        margin-bottom: 1.5rem;
+    }
+    
+    .avatar {
+        width: 100px;
+        height: 100px;
+        margin-bottom: 10px;
+    }
+    
+    h1 {
+        font-size: 1.7rem;
+        margin-bottom: 0.5rem;
+    }
+    
+    .title {
+        margin: 0.7rem 0;
+        font-size: 1rem;
+    }
+    
+    .tech-stack {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+    }
+    
+    .widget-decoration {
+        display: none;
+    }
+    
+    .modal {
+        align-items: flex-end;
+        padding: 0;
+        justify-content: center;
+    }
+    
+    .modal-content {
+        width: 100%;
+        max-width: 100%;
+        padding: 20px 16px 30px;
+        margin: 0;
+        border-radius: 20px 20px 0 0;
+        height: auto;
+        max-height: 90vh;
+        overflow-y: auto;
+    }
+    
+    .floating-dots {
+        display: none;
+    }
+    
+    .background-shapes {
+        opacity: 0.2;
+    }
+    
+    .project-item {
+        padding: 12px 10px;
+        margin-bottom: 10px;
+    }
+    
+    .project-icon {
+        margin-bottom: 8px;
+        width: 40px;
+        height: 40px;
+        min-width: 40px;
+        font-size: 1rem;
+    }
+    
+    .project-info h3 {
+        font-size: 0.95rem;
+        margin-bottom: 5px;
+        line-height: 1.3;
+    }
+    
+    .project-info p {
+        font-size: 0.85rem;
+        line-height: 1.4;
+    }
+    
+    .contact-card {
+        flex-direction: column;
+        padding: 15px;
+    }
+    
+    .contact-content {
+        margin-bottom: 15px;
+    }
+    
+    .contact-icon {
+        width: 45px;
+        height: 45px;
+    }
+    
+    .contact-text p {
+        font-size: 0.95rem;
+    }
+    
+    .subscribe-btn {
+        width: 100%;
+        justify-content: center;
+        padding: 10px;
+        font-size: 0.9rem;
+        border-radius: 10px;
+        min-height: 44px; /* 增加触摸区域 */
+    }
+    
+    .toggle-projects-btn {
+        padding: 8px 15px;
+        font-size: 0.9rem;
+        min-height: 44px; /* 增加触摸区域 */
+    }
+    
+    .qr-code {
+        max-width: 180px;
+        max-height: 180px;
+    }
+    
+    .close {
+        top: 10px;
+        right: 10px;
+        width: 30px;
+        height: 30px;
+        min-height: 44px; /* 增加触摸区域 */
+        min-width: 44px;
+    }
+    
+    .widget {
+        margin-bottom: 15px;
+    }
+    
+    .widget-header {
+        padding: 10px 12px;
+    }
+    
+    .widget-content {
+        padding: 12px;
+    }
+    
+    .social-link {
+        padding: 14px;
+        margin-bottom: 8px;
+        min-height: 44px; /* 增加触摸区域 */
+        border-radius: 12px;
+    }
+    
+    .social-icon {
+        min-width: 42px;
+        min-height: 42px;
+    }
+
+    .toast {
+        top: 20px;
+        width: auto;
+        max-width: 85%;
+        min-width: 200px;
+        z-index: 2100; /* 确保高于其他元素 */
+        font-weight: 500;
+    }
+    
+    .modal-divider {
+        margin: 15px 0;
+    }
+    
+    /* 优化技能标签在移动端的显示 */
+    .skills-list {
+        gap: 8px;
+        justify-content: flex-start;
+    }
+    
+    .skill-item {
+        padding: 8px 12px;
+        border-radius: 20px;
+    }
+    
+    /* 优化页脚在移动端的显示 */
+    .footer {
+        margin-top: 20px;
+        padding: 12px;
+        border-radius: 12px;
+    }
+}
+
+/* 特别小的移动设备 (< 360px) */
+@media screen and (max-width: 360px) {
+    body {
+        font-size: 13px;
+    }
+    
+    .card {
+        padding: 15px 10px;
+    }
+    
+    .widget-content {
+        padding: 12px 10px;
+    }
+    
+    .widget-header {
+        padding: 12px 10px;
+    }
+    
+    .avatar {
+        width: 100px;
+        height: 100px;
+    }
+    
+    h1 {
+        font-size: 1.6rem;
+    }
+    
+    .title {
+        font-size: 1rem;
+    }
+    
+    .skill-item, .tech-item {
+        padding: 6px;
+    }
+    
+    .qr-code {
+        max-width: 150px;
+        max-height: 150px;
+    }
+    
+    .modal-content {
+        padding: 12px;
+    }
+    
+    .social-link {
+        padding: 10px;
+    }
+    
+    .social-icon {
+        width: 35px;
+        height: 35px;
+        margin-right: 10px;
+        font-size: 0.9rem;
+    }
+    
+    .social-info h4 {
+        font-size: 0.95rem;
+    }
+    
+    .social-info p {
+        font-size: 0.8rem;
+    }
+    
+    .beian a {
+        font-size: 0.75rem;
+        padding: 5px 8px;
+    }
+}
+
+/* 特殊设备适配 */
+@media (hover: none) {
+    /* 触摸设备上禁用悬停效果 */
+    .skill-item:hover, 
+    .tech-item:hover, 
+    .project-item:hover,
+    .social-link:hover,
+    .widget:hover {
+        transform: none !important;
+        box-shadow: inherit !important;
+    }
+    
+    /* 修改交互元素，使其更易于触摸 */
+    .subscribe-btn,
+    .toggle-projects-btn {
+        padding: 12px 20px;
+    }
+    
+    /* 增加点击区域 */
+    .social-link {
+        padding: 15px;
+    }
+    
+    /* 增强触摸反馈 */
+    .social-link:active,
+    .subscribe-btn:active,
+    .toggle-projects-btn:active,
+    .skill-item:active,
+    .tech-item:active {
+        opacity: 0.7;
+        transition: opacity 0.1s ease;
+    }
+}
+
+/* 针对打印的样式优化 */
+@media print {
+    body {
+        background: white;
+    }
+    
+    .card {
+        box-shadow: none;
+        max-width: 100%;
+    }
+    
+    .decoration-lines, 
+    .side-decoration,
+    .floating-dots,
+    .subscribe-btn,
+    .theme-toggle,
+    .toggle-projects-btn {
+        display: none !important;
+    }
+    
+    .hidden-project {
+        display: flex !important;
+        opacity: 1 !important;
+    }
+    
+    a {
+        text-decoration: underline;
+    }
+}
+
+/* 暗色模式特殊优化 */
+@media (prefers-color-scheme: dark) {
+    body:not([data-theme]) {
+        /* 如果用户系统是暗色模式，且未主动设置主题，则应用暗色主题变量 */
+        --background: #111827;
+        --card-background: #1f2937;
+        --text: #f9fafb;
+        --text-light: #d1d5db;
+        --shadow-color: rgba(0, 0, 0, 0.3);
+        --overlay-bg: rgba(17, 24, 39, 0.8);
+        --widget-border: #374151;
+        --modal-bg: rgba(0, 0, 0, 0.7);
+        --widget-hover: #374151;
+    }
+}
+
+/* 减少动画（可访问性优化） */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+    
+    .floating-dot, 
+    .decoration-lines,
+    .loading-spinner {
+        animation: none !important;
+    }
+    
+    .fade-in, .project-item, .skill-item {
+        transition: none !important;
+    }
+} 

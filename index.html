@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<title>BOZOYAN</title>
+	<!-- 添加更多元信息 -->
+	<meta name="description" content="BOZOYAN - AI应用开发工程师个人主页">
+	<meta name="theme-color" content="#3b82f6">
+	<!-- 为iOS设备添加应用图标和全屏显示 -->
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+	<link rel="apple-touch-icon" href="assets/images/Bozoyan.png">
+	
+	<!-- 预加载关键资源 -->
+	<link rel="preload" href="assets/images/Bozoyan.png" as="image">
+	<link rel="preload" href="assets/css/styles.css" as="style">
+	
+	<!-- 引入霞鹜文楷屏幕阅读体 -->
+	<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/lxgw-wenkai-screen-webfont@1.1.0/style.css">
+	<link rel="stylesheet" href="assets/css/reset.css">
+	<link rel="stylesheet" href="assets/css/theme.css">
+	<link rel="stylesheet" href="assets/css/styles.css">
+	<link rel="stylesheet" href="assets/css/responsive.css">
+	<!-- Font Awesome CDN -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+	<!-- Favicon -->
+	<link rel="icon" href="assets/images/Bozoyan.png">
+	<!-- 主脚本 - 使用type="module"以支持ESM导入 -->
+	<script type="module" src="assets/js/main.js"></script>
+</head>
+
+<body>
+	<!-- 加载动画 -->
+	<div class="loading-screen">
+		<div class="loading-spinner"></div>
+	</div>
+
+	<!-- 滚动进度条 -->
+	<div class="progress-bar"></div>
+
+	<!-- 背景装饰元素 -->
+	<div class="decoration-lines left"></div>
+	<div class="decoration-lines right"></div>
+	<div class="floating-dots">
+		<div class="floating-dot"></div>
+		<div class="floating-dot"></div>
+		<div class="floating-dot"></div>
+		<div class="floating-dot"></div>
+	</div>
+
+	<!-- 左侧装饰元素 -->
+	<div class="side-decoration left">
+		<div class="geometric-shape circle"></div>
+		<div class="geometric-shape square"></div>
+		<div class="geometric-shape triangle"></div>
+		<div class="geometric-line"></div>
+		<div class="geometric-line"></div>
+		<div class="geometric-line"></div>
+	</div>
+
+	<!-- 右侧装饰元素 -->
+	<div class="side-decoration right">
+		<div class="geometric-shape circle"></div>
+		<div class="geometric-shape square"></div>
+		<div class="geometric-shape triangle"></div>
+		<div class="geometric-line"></div>
+		<div class="geometric-line"></div>
+		<div class="geometric-line"></div>
+	</div>
+
+	<div class="container">
+		<div class="card">
+			<div class="profile">
+				<div class="avatar">
+					<img src="assets/images/Bozoyan.png" alt="个人头像">
+				</div>
+				<h1>BOZOYAN</h1>
+				<p class="title">
+					<i class="fas fa-code"></i>
+					AI应用开发工程师
+				</p>
+				<div class="location">
+					<i class="fas fa-map-marker-alt"></i>
+					<span>中国，绍兴</span>
+				</div>
+			</div>
+
+			<!-- 联系方式 小组件 -->
+			<div class="widget-container">
+				<div class="widget-decoration">
+					<div class="widget-decoration-circle"></div>
+					<div class="widget-decoration-line"></div>
+				</div>
+				<div class="widget contact-widget">
+					<div class="contact-card">
+						<div class="contact-content">
+							<div class="contact-icon">
+								<i class="fa fa-paper-plane"></i>
+							</div>
+							<div class="contact-text">
+								<p>欢迎添加个人社交媒体互相学习！</p>
+							</div>
+					</div>
+						<button class="subscribe-btn">
+							<i class="fas fa-qrcode"></i>
+							点击查看
+						</button>
+					</div>
+					</div>
+					</div>
+			
+			<!-- 关于我 小组件 -->
+			<div class="widget-container">
+				<div class="widget-decoration">
+					<div class="widget-decoration-circle"></div>
+					<div class="widget-decoration-line"></div>
+					</div>
+				<div class="widget about-widget">
+					<div class="widget-header">
+						<div class="widget-icon about-icon">
+							<i class="fa fa-address-card"></i>
+					</div>
+						<h2>关于我</h2>
+					</div>
+					<div class="widget-content">
+						<p>从2001年在chinaren做第一个HTML网页起，已拥有 24 年 Web 开发经验，深耕技术领域，持续探索前沿创新。近 3 年专注于 AGI/AI 开发，擅长 ComfyUI 插件定制开发，能高效优化各类 AIGC 工作流。同时精通 RPA+AI 融合开发，通过 AI 自动化技术大幅提升业务生产力。熟练掌握 Python，热衷技术分享，可为客户定制各类 AIGC 与 RPA+AI 工具解决方案，用技术驱动效率革新。
+						</p>
+					</div>
+				</div>
+			</div>
+
+			<!-- 核心理念 小组件 -->
+			<div class="widget-container">
+				<div class="widget-decoration">
+					<div class="widget-decoration-circle"></div>
+					<div class="widget-decoration-line"></div>
+				</div>
+				<div class="widget philosophy-widget">
+					<div class="widget-header">
+						<div class="widget-icon philosophy-icon">
+							<i class="fa fa-compass"></i>
+						</div>
+						<h2>核心理念</h2>
+					</div>
+					<div class="widget-content">
+						<div class="core-belief">
+							<div class="belief-icon">
+								<i class="fas fa-lightbulb"></i>
+							</div>
+							<div class="belief-content">
+								<p>选择一个擅长或喜欢的领域，压倒性的时间投入，日拱一卒，成为一道激光，就能穿透所有圈层，一往无前！</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- 技术能力 小组件 -->
+			<div class="widget-container">
+				<div class="widget-decoration">
+					<div class="widget-decoration-circle"></div>
+					<div class="widget-decoration-line"></div>
+				</div>
+				<div class="widget skills-widget">
+					<div class="widget-header">
+						<div class="widget-icon skills-icon">
+							<i class="fa fa-brain"></i>
+						</div>
+						<h2>技术能力</h2>
+					</div>
+					<div class="widget-content">
+						<div class="skills-list">
+							<div class="skill-item">
+								<i class="fas fa-robot"></i>
+								<span>AIGC 工作流开发</span>
+							</div>
+							<div class="skill-item">
+								<i class="fas fa-network-wired"></i>
+								<span>深度学习算法</span>
+							</div>
+							<div class="skill-item">
+								<i class="fas fa-language"></i>
+								<span>RPA+AI 融合开发</span>
+							</div>
+							<div class="skill-item">
+								<i class="fas fa-comment-dots"></i>
+								<span>大语言模型应用开发</span>
+							</div>
+							<div class="skill-item">
+								<i class="fas fa-cogs"></i>
+								<span>AI Agent 应用开发</span>
+							</div>
+						</div>
+
+						<div class="tech-stack">
+							<div class="tech-item">
+								<i class="fab fa-python"></i>
+								<span>Python</span>
+							</div>
+							<div class="tech-item">
+								<i class="fas fa-brain"></i>
+								<span>PyTorch</span>
+							</div>
+							<div class="tech-item">
+								<i class="fas fa-project-diagram"></i>
+								<span>TensorFlow</span>
+							</div>
+							<div class="tech-item">
+								<i class="fas fa-microchip"></i>
+								<span>Dify</span>
+							</div>
+							<div class="tech-item">
+								<i class="fas fa-robot"></i>
+								<span>Fast API</span>
+							</div>
+							<div class="tech-item">
+								<i class="fas fa-database"></i>
+								<span>LangChain</span>
+							</div>
+							<div class="tech-item">
+								<i class="fas fa-cogs"></i>
+								<span>OpenAI API</span>
+						</div>
+							<div class="tech-item">
+								<i class="fas fa-sitemap"></i>
+								<span>Neo4j</span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- 项目经验 小组件 -->
+			<div class="widget-container">
+				<div class="widget-decoration">
+					<div class="widget-decoration-circle"></div>
+					<div class="widget-decoration-line"></div>
+				</div>
+				<div class="widget projects-widget">
+					<div class="widget-header">
+						<div class="widget-icon projects-icon">
+							<i class="fa fa-laptop-code"></i>
+						</div>
+						<h2>项目经验</h2>
+					</div>
+					<div class="widget-content">
+						<div class="projects-list">
+							<!-- 静态项目数据，确保即使JavaScript加载失败也能显示项目 -->
+							<div class="project-item">
+								<div class="project-icon">
+									<i class="fas fa-database"></i>
+								</div>
+								<div class="project-info">
+									<h3>基于 Dify 框架的医疗 RAG 问答系统</h3>
+									<p>构建医疗领域知识库问答系统，整合专业医学文献和病例资料，支持医生进行精准诊断参考和治疗方案查询，提高临床决策效率。</p>
+								</div>
+							</div>
+							
+							<div class="project-item">
+								<div class="project-icon">
+									<i class="fas fa-leaf"></i>
+								</div>
+								<div class="project-info">
+									<h3>基于 Dify 框架的环保行业火电 RAG 问答系统</h3>
+									<p>为环保行业开发专业知识库，整合火电产业相关政策法规和技术标准，帮助从业人员快速解答监管合规问题，辅助环保决策。</p>
+								</div>
+							</div>
+							
+							<div class="project-item">
+								<div class="project-icon">
+									<i class="fas fa-chain"></i>
+								</div>
+								<div class="project-info">
+									<h3>基于 Langchain + OpenAI API 构建的RAG QA问答对生成系统</h3>
+									<p>开发智能问答对生成系统，通过检索增强技术自动创建高质量训练数据，大幅提升模型在特定领域的问答精度，降低数据标注成本。</p>
+								</div>
+							</div>
+							
+							<div class="project-item">
+								<div class="project-icon">
+									<i class="fas fa-database"></i>
+								</div>
+								<div class="project-info">
+									<h3>基于 Vanna 框架构建的环保 Text2SQL 项目</h3>
+									<p>创建自然语言转SQL查询系统，使环保领域非技术人员能通过日常用语查询复杂数据库，简化数据获取流程，提升工作效率。</p>
+								</div>
+							</div>
+							
+							<div class="project-item">
+								<div class="project-icon">
+									<i class="fas fa-file-word"></i>
+								</div>
+								<div class="project-info">
+									<h3>基于模版引擎 + OpenAI API 构建的环保行业环评报告生成系统</h3>
+									<p>开发自动化环评报告生成工具，结合行业模板和AI技术，将原始环境数据转化为专业规范的评估报告，大幅缩短报告编制时间。</p>
+								</div>
+							</div>
+							
+							<div class="project-item">
+								<div class="project-icon">
+									<i class="fas fa-chart-bar"></i>
+								</div>
+								<div class="project-info">
+									<h3>基于 Dify 框架的 Excel 表格数据图表可视化分析项目</h3>
+									<p>构建智能数据分析平台，自动处理Excel表格数据并生成直观的可视化图表，帮助非专业人员快速理解数据趋势和洞察。</p>
+								</div>
+							</div>
+							
+							<div class="project-item">
+								<div class="project-icon">
+									<i class="fas fa-project-diagram"></i>
+								</div>
+								<div class="project-info">
+									<h3>基于 Neo4j + OpenAI API + 模版引擎构建的环保环评报告生成系统</h3>
+									<p>开发基于知识图谱的环评报告生成系统，整合环保政策与标准数据库，实现自动化报告生成，同时确保内容的准确性和合规性。</p>
+								</div>
+							</div>
+							
+							<div class="project-item">
+								<div class="project-icon">
+									<i class="fas fa-search"></i>
+								</div>
+								<div class="project-info">
+									<h3>医学RAG检索增强生成系统</h3>
+									<p>为医学研究企业开发高效知识检索库，通过PDF解析、文本分块、向量库存储等技术，实现精准检索医学文献，辅助专利发布流程。</p>
+								</div>
+							</div>
+							
+							<div class="project-item">
+								<div class="project-icon">
+									<i class="fas fa-notes-medical"></i>
+								</div>
+								<div class="project-info">
+									<h3>门诊病历自动生成系统</h3>
+									<p>将医患对话录音转换为结构化电子病历，帮助医生节省手写病历时间，提高医疗服务效率，降低人为错误。</p>
+								</div>
+							</div>
+							
+							<div class="project-item">
+								<div class="project-icon">
+									<i class="fas fa-brain"></i>
+								</div>
+								<div class="project-info">
+									<h3>天明大模型预训练与微调</h3>
+									<p>从数据准备、基础模型训练到有监督微调(SFT)和人类反馈强化学习(RLHF)，独立完成GLM框架下的公司大模型训练。</p>
+								</div>
+							</div>
+							
+							<div class="project-item">
+								<div class="project-icon">
+									<i class="fas fa-hospital"></i>
+								</div>
+								<div class="project-info">
+									<h3>医疗辅助智能系统</h3>
+									<p>与丁香公司合作开发线上就诊平台，结合知识图谱、命名实体识别和向量相似度检索技术，为患者提供便捷的线上医疗服务。</p>
+								</div>
+							</div>
+							
+							<div class="project-item">
+								<div class="project-icon">
+									<i class="fas fa-question-circle"></i>
+								</div>
+								<div class="project-info">
+									<h3>医疗知识图谱问答助手</h3>
+									<p>开发百科问答机器人，通过知识图谱技术预先解答患者疑问，减轻医院工作负担，同时丰富医院HIS库，提升服务质量。</p>
+								</div>
+							</div>
+							
+							<div class="project-item">
+								<div class="project-icon">
+									<i class="fas fa-heartbeat"></i>
+								</div>
+								<div class="project-info">
+									<h3>胃部健康评估系统</h3>
+									<p>开发基于机器学习的胃癌检测与预后预测系统，通过特征工程筛选关键特征，采用GBDT、随机森林等集成模型实现早期诊断。</p>
+								</div>
+							</div>
+						</div>
+						<div class="projects-toggle">
+							<button class="toggle-projects-btn" onclick="toggleProjects()">
+								<span class="show-more"><i class="fas fa-chevron-down"></i> 查看更多项目</span>
+								<span class="show-less"><i class="fas fa-chevron-up"></i> 收起项目列表</span>
+					</button>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- 个人产品 小组件 -->
+			<div class="widget-container">
+				<div class="widget-decoration">
+					<div class="widget-decoration-circle"></div>
+					<div class="widget-decoration-line"></div>
+				</div>
+				<div class="widget products-widget">
+					<div class="widget-header">
+						<div class="widget-icon products-icon">
+							<i class="fa fa-gift"></i>
+						</div>
+						<h2>个人产品</h2>
+					</div>
+					<div class="widget-content">
+						<div class="coming-soon">
+							<div class="coming-soon-icon">
+								<i class="fas fa-hourglass-half"></i>
+							</div>
+							<div class="coming-soon-text">
+								<p>静待...</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="background-shapes">
+				<div class="shape shape-1"></div>
+				<div class="shape shape-2"></div>
+				<div class="shape shape-3"></div>
+			</div>
+		</div>
+	</div>
+
+	<!-- 社交媒体弹窗 -->
+	<div class="modal" id="social-modal">
+		<div class="modal-content">
+			<span class="close">
+				<i class="fas fa-times"></i>
+			</span>
+			<div class="modal-header">
+				<i class="fas fa-share-alt"></i>
+				<h3>社交媒体</h3>
+			</div>
+			
+			<!-- 社交媒体链接 -->
+			<div class="social-links">
+				<a href="javascript:void(0)" class="social-link wechat" id="copy-wechat">
+					<div class="social-icon">
+						<i class="fab fa-weixin"></i>
+					</div>
+					<div class="social-info">
+						<h4>WeChat</h4>
+						<p>点击复制微信号：bozoyan</p>
+					</div>
+					<div class="social-arrow copy-icon">
+						<i class="fas fa-copy"></i>
+					</div>
+				</a>
+				
+<<<<<<< HEAD
+				<a href="https://slas.cc" target="_blank" class="social-link blog">
+=======
+				<a href="https://blog.museact.ai" target="_blank" class="social-link blog">
+>>>>>>> 23674cbcbeef8bcba6b86da598fbfb4c74f4c873
+					<div class="social-icon">
+						<i class="fas fa-blog"></i>
+					</div>
+					<div class="social-info">
+						<h4>Blog</h4>
+						<p>访问我的博客</p>
+					</div>
+					<div class="social-arrow">
+						<i class="fas fa-chevron-right"></i>
+					</div>
+				</a>
+				
+<<<<<<< HEAD
+				<a href="https://github.com/bozoyan" target="_blank" class="social-link github">
+=======
+				<a href="https://github.com/miusing" target="_blank" class="social-link github">
+>>>>>>> 23674cbcbeef8bcba6b86da598fbfb4c74f4c873
+					<div class="social-icon">
+					<i class="fab fa-github"></i>
+				</div>
+					<div class="social-info">
+						<h4>GitHub</h4>
+						<p>查看我的代码仓库</p>
+				</div>
+					<div class="social-arrow">
+						<i class="fas fa-chevron-right"></i>
+				</div>
+				</a>
+			</div>
+			
+			<!-- 添加底部空间，确保有足够的滚动区域 -->
+			<div style="height: 20px;"></div>
+		</div>
+	</div>
+
+	<!-- 轮播图放大弹窗 -->
+	<!-- <div class="modal" id="carousel-modal">
+		<div class="modal-content carousel-modal-content">
+			<span class="close">
+				<i class="fas fa-times"></i>
+			</span>
+			<img id="carousel-modal-img" src="" alt="轮播图大图">
+			<div class="carousel-modal-caption">
+				<h3 id="carousel-modal-title"></h3>
+				<p id="carousel-modal-desc"></p>
+			</div>
+		</div>
+	</div> -->
+
+	<!-- 页脚 -->
+	<footer class="footer">
+		<div class="copyright">
+			<span class="year">2021 - 2025</span> © <a href="https://bozoyan.com" target="_blank"><span class="name">BOZOYAN</span></a>
+		</div>
+		<!-- 暂时注释掉备案信息 
+		<div class="beian">
+			<a href="https://beian.miit.gov.cn/" target="_blank" class="icp">晋ICP备2022003280号-3</a>
+			<a href="http://www.beian.gov.cn/portal/registerSystemInfo" target="_blank" class="gongan">
+				<i class="fas fa-shield-alt gongan-icon"></i>
+				<span class="gongan-text">晋公网安备14092802000114号</span>
+			</a>
+		</div>
+		-->
+	</footer>
+
+	<!-- 复制成功提示 -->
+	<div class="toast" id="toast-message">
+		<i class="fas fa-check-circle"></i>
+		<span>微信号已复制到剪贴板！</span>
+	</div>
+
+	<script>
+		// 初始化页面加载
+		document.addEventListener('DOMContentLoaded', function() {
+			// 优化加载体验
+			setTimeout(function() {
+				document.querySelector('.loading-screen').style.opacity = '0';
+				setTimeout(function() {
+					document.querySelector('.loading-screen').style.display = 'none';
+				}, 500);
+			}, 500);
+			
+			// 初始化页面滚动监听
+			window.addEventListener('scroll', function() {
+				const scrollPosition = window.scrollY;
+				const windowHeight = window.innerHeight;
+				const documentHeight = document.documentElement.scrollHeight;
+				
+				// 更新滚动进度条
+				const scrollPercentage = (scrollPosition / (documentHeight - windowHeight)) * 100;
+				document.querySelector('.progress-bar').style.width = `${scrollPercentage}%`;
+			});
+			
+			// 隐藏超过3个的项目
+			const allProjects = document.querySelectorAll('.projects-list .project-item');
+			for (let i = 0; i < allProjects.length; i++) {
+				if (i >= 3) {
+					const item = allProjects[i];
+					item.classList.add('hidden-project');
+					item.style.display = 'none';
+					item.style.opacity = '0';
+					item.style.transform = 'translateY(10px)';
+				}
+			}
+			
+			// 初始化弹窗功能
+			const modal = document.getElementById('social-modal');
+			const btn = document.querySelector('.subscribe-btn');
+			const closeBtn = modal && modal.querySelector('.close');
+
+			if (btn && modal && closeBtn) {
+				// 打开弹窗的点击事件
+		btn.onclick = function() {
+			modal.style.display = 'block';
+			// 添加一个小延迟以确保display:block已经应用
+			setTimeout(() => {
+				modal.classList.add('active');
+						// 锁定背景滚动
+						document.body.style.overflow = 'hidden';
+			}, 10);
+		}
+
+				// 关闭按钮的点击事件
+				closeBtn.onclick = function() {
+					closeModal();
+				}
+
+				// 点击弹窗外部区域关闭弹窗
+		window.onclick = function(event) {
+			if (event.target == modal) {
+						closeModal();
+					}
+				}
+				
+				// 关闭弹窗函数
+				function closeModal() {
+				modal.classList.remove('active');
+				setTimeout(() => {
+					modal.style.display = 'none';
+						// 恢复背景滚动
+						document.body.style.overflow = '';
+				}, 300);
+			}
+		}
+
+			// 微信号复制功能
+			const copyWechatBtn = document.getElementById('copy-wechat');
+			if (copyWechatBtn) {
+				copyWechatBtn.addEventListener('click', function(e) {
+					e.preventDefault(); // 防止默认行为
+					
+					// 使用现代的Clipboard API复制文本
+					const wechatId = 'bozoyan';
+					
+					// 添加触觉反馈 (如果设备支持)
+					if (navigator.vibrate) {
+						navigator.vibrate(50);
+					}
+					
+					// 尝试使用现代的Clipboard API
+					if (navigator.clipboard && navigator.clipboard.writeText) {
+						navigator.clipboard.writeText(wechatId)
+							.then(() => {
+								// 显示复制成功提示
+								showCopySuccess(this);
+							})
+							.catch(err => {
+								// 如果失败，回退到旧方法
+								fallbackCopyTextToClipboard(wechatId, this);
+							});
+					} else {
+						// 不支持Clipboard API，使用旧方法
+						fallbackCopyTextToClipboard(wechatId, this);
+					}
+				});
+			}
+			
+			// 备用复制方法
+			function fallbackCopyTextToClipboard(text, element) {
+				// 创建一个临时输入框
+				const tempInput = document.createElement('input');
+				tempInput.value = text;
+				tempInput.style.position = 'fixed';
+				tempInput.style.opacity = '0';
+				document.body.appendChild(tempInput);
+				
+				// 选择并复制文本
+				tempInput.focus();
+				tempInput.select();
+				
+				try {
+					document.execCommand('copy');
+					showCopySuccess(element);
+				} catch (err) {
+					console.error('复制失败:', err);
+					// 显示手动复制提示
+					showManualCopyTip(text);
+				}
+				
+				// 移除临时输入框
+				document.body.removeChild(tempInput);
+			}
+			
+			// 显示复制成功动画
+			function showCopySuccess(element) {
+				// 添加点击反馈效果
+				element.classList.add('copy-active');
+				setTimeout(() => {
+					element.classList.remove('copy-active');
+				}, 300);
+				
+				const socialArrow = element.querySelector('.social-arrow');
+				if (socialArrow) {
+					socialArrow.innerHTML = '<i class="fas fa-check"></i>';
+
+					// 恢复原始图标
+					setTimeout(() => {
+						socialArrow.innerHTML = '<i class="fas fa-copy"></i>';
+					}, 2000);
+				}
+				
+				// 显示Toast提示
+				const toast = document.getElementById('toast-message');
+				if (toast) {
+					// 清除任何现有的timeout
+					if (window.toastTimeout) {
+						clearTimeout(window.toastTimeout);
+					}
+					
+					toast.classList.add('show');
+					window.toastTimeout = setTimeout(() => {
+						toast.classList.remove('show');
+					}, 3000);
+				}
+			}
+			
+			// 显示手动复制提示
+			function showManualCopyTip(text) {
+				alert(`请手动复制以下微信号: ${text}`);
+			}
+		});
+		
+		// 简单的项目展开折叠功能
+		function toggleProjects() {
+			// 获取项目列表容器
+			const projectsWidget = document.querySelector('.projects-widget');
+			const isExpanded = projectsWidget.classList.toggle('projects-expanded');
+			
+			// 获取所有项目
+			const allProjects = document.querySelectorAll('.projects-list .project-item');
+			
+			// 初始显示的项目数量
+			const initialProjectsCount = 3;
+			
+			// 控制项目的显示和隐藏
+			for (let i = 0; i < allProjects.length; i++) {
+				if (i >= initialProjectsCount) {
+					const item = allProjects[i];
+					if (isExpanded) {
+						item.style.display = 'flex';
+						// 添加淡入动画
+						setTimeout(() => {
+							item.style.opacity = '1';
+							item.style.transform = 'translateY(0)';
+						}, 10);
+					} else {
+						item.style.opacity = '0';
+						item.style.transform = 'translateY(10px)';
+						// 等待动画完成后隐藏
+						setTimeout(() => {
+							item.style.display = 'none';
+						}, 300);
+					}
+				}
+			}
+		}
+	</script>
+</body>
+
+</html>
