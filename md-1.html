@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DeepSeek 等大模型工具使用手册（实战篇）</title>
+    <!-- Tailwind CSS v3 via CDN -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* 自定义样式：深色主题和全局调整 */
+        body {
+            background: linear-gradient(to right, #1a202c, #2d3748); /* 深色渐变背景 */
+            color: #e2e8f0; /* 浅色文字 */
+            font-family: 'Arial', sans-serif;
+            overflow-x: hidden;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.1); /* 玻璃态背景 */
+            backdrop-filter: blur(10px);
+            border-radius: 0.5rem;
+            transition: all 0.3s ease; /* 平滑过渡 */
+        }
+        .glass-card:hover {
+            transform: translateY(-5px) scale(1.05); /* 悬停上浮和缩放 */
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.3); /* 阴影增强 */
+        }
+        .modal {
+            display: none; /* 模态框默认隐藏 */
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            justify-content: center;
+            align-items: center;
+            transition: opacity 0.3s ease; /* 平滑过渡 */
+        }
+        .modal.active {
+            display: flex;
+            opacity: 1;
+        }
+        .carousel {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            overflow: hidden;
+            margin-top: 1rem;
+        }
+        .carousel-inner {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+        .carousel-item {
+            min-width: 100%;
+            box-sizing: border-box;
+        }
+        .carousel-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 10px;
+            cursor: pointer;
+        }
+        .carousel-arrow.left { left: 10px; }
+        .carousel-arrow.right { right: 10px; }
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: rgba(255, 255, 255, 0.2);
+        }
+        .progress {
+            height: 100%;
+            background: #60a5fa; /* 进度条颜色 */
+            width: 0;
+            transition: width 0.3s ease;
+        }
+    </style>
+</head>
+<body class="p-4 md:p-8">
+    <!-- 滚动进度条 -->
+    <div class="progress-bar">
+        <div id="progress" class="progress"></div>
+    </div>
+
+    <header class="text-center mb-8">
+        <h1 class="text-3xl md:text-5xl font-bold text-white">厦大出手，必是精品！DeepSeek 及多款 AI 工具实战技巧大公开！</h1>
+        <p class="text-gray-300 mt-2">厦门大学大数据教学团队推出的 177 页手册，手把手教你成为 AI 应用高手。</p>
+    </header>
+
+    <main class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- 提示卡片：每个章节作为卡片 -->
+        <div class="glass-card p-6 cursor-pointer" onclick="openModal('modal1')">
+            <h2 class="text-xl font-semibold mb-2">一、初识庐山真面目：AIGC 与大模型基础课</h2>
+            <p>了解 AIGC 和大模型的基本概念，包括核心功能和关系。</p>
+            <img src="https://mmbiz.qpic.cn/mmbiz_png/zlD2iah6QpJhAAFbiaTo67bYVk6ttw2mJMd9oo5Rq5PkyzjJkJFDHttQicwwte6ZxaZMI8Id9NlCqSfBh2MqMNxnw/640?wx_fmt=png&from=appmsg&tp=webp&wxfrom=5&wx_lazy=1" alt="AIGC 概念图" class="mt-4 w-full h-32 object-cover rounded">
+        </div>
+
+        <div class="glass-card p-6 cursor-pointer" onclick="openModal('modal2')">
+            <h2 class="text-xl font-semibold mb-2">二、玩转文字魔法：DeepSeek 领衔文本创作</h2>
+            <p>DeepSeek 的核心功能、沟通秘诀和文档处理技巧。</p>
+            <img src="https://mmbiz.qpic.cn/mmbiz_png/zlD2iah6QpJhAAFbiaTo67bYVk6ttw2mJMMsGeBMjiaxR4ibibQiaCW45RTX5reHrve39ibbz431UI0fOPDNQbojThD2w/640?wx_fmt=png&from=appmsg&tp=webp&wxfrom=5&wx_lazy=1" alt="DeepSeek 功能图" class="mt-4 w-full h-32 object-cover rounded">
+        </div>
+
+        <div class="glass-card p-6 cursor-pointer" onclick="openModal('modal3')">
+            <h2 class="text-xl font-semibold mb-2">三、点亮视觉创意：图片 AIGC</h2>
+            <p>使用即梦 AI、百度 AI 图片助手等工具进行图片生成和修复。</p>
+            <img src="https://mmbiz.qpic.cn/mmbiz_png/zlD2iah6QpJhAAFbiaTo67bYVk6ttw2mJMU4IRSz1f7lV9D0eZY1uZynDo71exiaEnSia4uqVbSEXEQkB9xBJJ8ItQ/640?wx_fmt=png&from=appmsg&tp=webp&wxfrom=5&wx_lazy=1" alt="图片 AIGC 示例" class="mt-4 w-full h-32 object-cover rounded">
+        </div>
+
+        <div class="glass-card p-6 cursor-pointer" onclick="openModal('modal4')">
+            <h2 class="text-xl font-semibold mb-2">四、聆听 AI 之声：语音 AIGC</h2>
+            <p>文本转语音、语音克隆工具如豆包 APP 和腾讯智影。</p>
+            <img src="https://mmbiz.qpic.cn/mmbiz_png/zlD2iah6QpJhAAFbiaTo67bYVk6ttw2mJMdIk2mhDhbdk8JG1q5k33KC7iaQRh2uD8OMq4tibby4rZpWvk7AHuFfjg/640?wx_fmt=png&from=appmsg&tp=webp&wxfrom=5&wx_lazy=1" alt="语音 AIGC 示例" class="mt-4 w-full h-32 object-cover rounded">
+        </div>
+
+        <div class="glass-card p-6 cursor-pointer" onclick="openModal('modal5')">
+            <h2 class="text-xl font-semibold mb-2">五、大片既视感：视频 AIGC</h2>
+            <p>使用可灵 AI 和即梦 AI 生成视频。</p>
+            <img src="https://mmbiz.qpic.cn/mmbiz_png/zlD2iah6QpJhAAFbiaTo67bYVk6ttw2mJMnRP7l2VU4tiaPNJRf7cicnia9sfY2iaDaxwuYHqBTkAtG85lKW9T1Fw8uA/640?wx_fmt=png&from=appmsg&tp=webp&wxfrom=5&wx_lazy=1" alt="视频 AIGC 示例" class="mt-4 w-full h-32 object-cover rounded">
+        </div>
+
+        <div class="glass-card p-6 cursor-pointer" onclick="openModal('modal6')">
+            <h2 class="text-xl font-semibold mb-2">六、编程好搭档：AIGC 辅助编程</h2>
+            <p>代码生成和优化工具如豆包和 DeepSeek。</p>
+            <img src="https://mmbiz.qpic.cn/mmbiz_png/zlD2iah6QpJhAAFbiaTo67bYVk6ttw2mJMJsRJjKfAxVokNVcu3L42roozw4ueygFY2OwIWOemNptOLTgIOr79wQ/640?wx_fmt=png&from=appmsg&tp=webp&wxfrom=5&wx_lazy=1" alt="编程 AIGC 示例" class="mt-4 w-full h-32 object-cover rounded">
+        </div>
+
+        <div class="glass-card p-6 cursor-pointer" onclick="openModal('modal7')">
+            <h2 class="text-xl font-semibold mb-2">七、搜索新纪元：AI 搜索</h2>
+            <p>使用纳米 AI 搜索等工具。</p>
+            <img src="https://mmbiz.qpic.cn/mmbiz_png/zlD2iah6QpJhAAFbiaTo67bYVk6ttw2mJMGdPARYjGk3ick2b07bsgokhYRYSD0eLVBwsfuOCyARtxZibYKegncCoQ/640?wx_fmt=png&from=appmsg&tp=webp&wxfrom=5&wx_lazy=1" alt="AI 搜索 示例" class="mt-4 w-full h-32 object-cover rounded">
+        </div>
+
+        <div class="glass-card p-6 cursor-pointer" onclick="openModal('modal8')">
+            <h2 class="text-xl font-semibold mb-2">八、智能办公新体验：AI 让工作更高效</h2>
+            <p>WPS 灵犀等工具的办公应用。</p>
+            <img src="https://mmbiz.qpic.cn/mmbiz_png/zlD2iah6QpJhAAFbiaTo67bYVk6ttw2mJMXXovvtmsDvKxyAxaJ9YF50BGa0x82LLyf4PbANOKYS7KwuqjgGYfrw/640?wx_fmt=png&from=appmsg&tp=webp&wxfrom=5&wx_lazy=1" alt="智能办公 示例" class="mt-4 w-full h-32 object-cover rounded">
+        </div>
+
+        <!-- 结尾部分作为单独卡片 -->
+        <div class="glass-card p-6 col-span-full">
+            <h2 class="text-xl font-semibold mb-2">结尾</h2>
+            <p>从 AIGC 的基础概念到各类工具的实战技巧，厦门大学团队用这份 177 页的报告，为我们精心铺就了一条通往 AI 应用高手的清晰路径。这不仅仅是一份工具手册，更是一份对知识普及的执着与热爱。感谢林子雨副教授及其团队的无私分享！现在，轮到我们接过这把“AI 火炬”，在各自的领域发光发热了。记住，AI 不是目的，而是我们达成目标的强大助力。如果你也有所启发，不妨将这份智慧的结晶传递下去，让 AI 赋能更多追梦人！也欢迎大家在评论区留言，分享你使用 AI 工具的心得与趣事！由于篇幅过长，完整版报告可在底部留言区回复 666 免费获取，记得点赞分享感谢支持！</p>
+            <img src="https://mmbiz.qpic.cn/mmbiz_gif/zlD2iah6QpJhAAFbiaTo67bYVk6ttw2mJMWiazicRweuvSzsKwX8FoNtA1RribcibsYebLH9enr9ia7rRsoW14THNMWfA/640?wx_fmt=gif&from=appmsg&tp=webp&wxfrom=5&wx_lazy=1" alt="结尾 GIF" class="mt-4 w-full h-32 object-cover rounded">
+        </div>
+    </main>
+
+    <!-- 模态框容器 -->
+    <div id="modal1" class="modal">
+        <div class="glass-card p-6 max-w-4xl">
+            <h2 class="text-xl font-semibold">一、初识庐山真面目：AIGC与大模型基础课</h2>
+            <p><strong>AIGC是什么？</strong> <br>简单说，AIGC就是“人工智能生成内容”。无论是文字、图片、音乐还是视频，AI都能帮你创作！这项技术的核心在于利用算法生成具有创意和质量的内容，是AI发展进入新阶段的重要标志。</p>
+            <p><strong>AIGC和大模型啥关系？</strong> <br>它们是“黄金搭档”！大模型为AIGC提供了强大的技术支持和数据基础，而AIGC的需求又反过来推动大模型不断进化。我们现在接触到的AIGC应用，背后几乎都有DeepSeek、豆包、Kimi这类大模型的影子。</p>
+            <div class="carousel">
+                <div class="carousel-inner" id="carousel1">
+                    <img src="https://mmbiz.qpic.cn/mmbiz_png/zlD2iah6QpJhAAFbiaTo67bYVk6ttw2mJMmKQ7T2J9U2WmRsicOORx9icYmgUUibLLuRsZspk4J0mQYUKTaW6BsNrVg/640?wx_fmt=png&from=appmsg&tp=webp&wxfrom=5&wx_lazy=1" alt="图片 1" class="carousel-item">
+                    <img src="https://mmbiz.qpic.cn/mmbiz_png/zlD2iah6QpJhAAFbiaTo67bYVk6ttw2mJMWvBn1TzZfEFwFpE3Bs4UIo2pkqseferuuVtHLegfbLQ9HryW0JrWXg/640?wx_fmt=png&from=appmsg&tp=webp&wxfrom=5&wx_lazy=1" alt="图片 2" class="carousel-item">
+                </div>
+                <div class="carousel-arrow left" onclick="plusSlides(1, 'carousel1')"><i class="fas fa-arrow-left"></i></div>
+                <div class="carousel-arrow right" onclick="plusSlides(1, 'carousel1')"><i class="fas fa-arrow-right"></i></div>
+            </div>
+            <i class="fas fa-times cursor-pointer absolute top-2 right-2" onclick="closeModal('modal1')"></i>
+        </div>
+    </div>
+
+    <div id="modal2" class="modal">
+        <div class="glass-card p-6 max-w-4xl">
+            <h2 class="text-xl font-semibold">二、玩转文字魔法：DeepSeek领衔，文本创作与处理全攻略</h2>
+            <p><strong>DeepSeek：你的智能对话与文档处理专家</strong> <br>作为国产大模型的优秀代表，DeepSeek以其强大的对话和处理能力，成为众多用户的首选。核心功能一览包括深度思考和联网搜索。</p>
+            <p><strong>沟通秘诀</strong> <br>简单直接，别搞太复杂的指令，直接说需求；多轮调教，首次结果不完美时像聊天一样追问逐步优化。</p>
+            <p><strong>魔法指令</strong> <br>DeepSeek内置快捷指令如/续写、/简化等，让操作更高效。</p>
+            <p><strong>文档处理</strong> <br>上传PDF、Word等文件，能总结、问答和可视化内容。</p>
+            <p><strong>更多文本AI工具与技巧</strong> <br>百度文心一言支持个性化风格；讯飞智文一代PPT；DeepSeek + Kimi和Xmind组合制作。</p>
+            <div class="carousel">
+                <div class="carousel-inner" id="carousel2">
+                    <img src="https://mmbiz.qpic.cn/mmbiz_png/zlD2iah6QpJhAAFbiaTo67bYVk6ttw2mJMMsGeBMjiaxR4ibibQiaCW45RTX5reHrve39ibbz431UI0fOPDNQbojThD2w/640?wx_fmt=png&from=appmsg&tp=webp&wxfrom=5&wx_lazy=1" alt="图片 1" class="carousel-item">
+                    <img src="https://mmbiz.qpic.cn/mmbiz_png/zlD2iah6QpJhAAFbiaTo67bYVk6ttw2mJMpR7QChrl1UMwJ8f4PZcsVF5oibBCffR6Gib30evpTldh90nwXY1kMMQA/640?wx_fmt=png&from=appmsg&tp=webp&wxfrom=5&wx_lazy=1" alt="图片 2" class="carousel-item">
+                    <img src="https://mmbiz.qpic.cn/mmbiz_png/zlD2iah6QpJhAAFbiaTo67bYVk6ttw2mJMkLhlpiaxfbtUjK18Tlqh9anLic7ciaCWDw3dLzaqyTR7RUaHVIVQA7SnA/640?wx_fmt=png&from=appmsg&tp=webp&wxfrom=5&wx_lazy=1" alt="图片 3" class="carousel-item">
+                    <img src="https://mmbiz.qpic.cn/mmbiz_png/zlD2iah6QpJhAAFbiaTo67bYVk6ttw2mJMmOtbgdwrsHNcm0cQf06yI1yXv4SlShLhlzFOOOTBBicNWSumSNKp0uQ/640?wx_fmt=png&from=appmsg&tp=webp&wxfrom=5&wx_lazy=1" alt="图片 4" class="carousel-item">
+                </div>
+                <div class="carousel-arrow left" onclick="plusSlides(2, 'carousel2')"><i class="fas fa-arrow-left"></i></div>
+                <div class="carousel-arrow right" onclick="plusSlides(2, 'carousel2')"><i class="fas fa-arrow-right"></i></div>
+            </div>
+            <i class="fas fa-times cursor-pointer absolute top-2 right-2" onclick="closeModal('modal2')"></i>
+        </div>
+    </div>
+
+    <!-- 继续添加 modal3 到 modal8，基于文档内容 -->
+
+    <div id="modal3" class="modal">
+        <div class="glass-card p-6 max-w-4xl">
+            <h2 class="text-xl font-semibold">三、点亮视觉创意：图片AIGC，人人都是艺术家</h2>
+            <p><strong>即梦AI</strong> <br>字节跳动出品，支持创意图片生成、智能抠图与图片融合、涂抹消除与局部重绘。</p>
+            <p><strong>百度AI图片助手</strong> <br>支持AI修图与老照片修复、图片扩展与高清化。</p>
+            <p><strong>豆包</strong> <br>字节跳动出品，支持AI绘画艺术创作和真实照片转二次元。</p>
+            <p><strong>DeepSeek + 即梦AI</strong> <br>用DeepSeek生成海报文案，再用即梦AI生成视觉图像。</p>
+            <div class="carousel">
+                <div class="carousel-inner" id="carousel3">
+                    <img src="https://mmbiz.qpic.cn/mmbiz_png/zlD2iah6QpJhAAFbiaTo67bYVk6ttw2mJMU4IRSz1f7lV9D0eZY1uZynDo71exiaEnSia4uqVbSEXEQkB9xBJJ8ItQ/640?wx_fmt=png&from=appmsg&tp=webp&wxfrom=5&wx_lazy=1" alt="图片 1" class="carousel-item">
+                    <img src="https://mmbiz.qpic.cn/mmbiz_png/zlD2iah6QpJhAAFbiaTo67bYVk6ttw2mJMeDkXWHm2UiaNJ6BhtvibwGoSCmcf8aYxvQuU6ECw1ia0t0Z6Cp5Q3wcyw/640?wx_fmt=png&from=appmsg&tp=webp&wxfrom=5&wx_lazy=1" alt="图片 2" class="carousel-item">
+                    <img src="https://mmbiz.qpic.cn/mmbiz_png/zlD2iah6QpJhAAFbiaTo67bYVk6ttw2mJMvhWLzdQHbZAW1jjX3aoWIkeyia5ConZhBJ0SbNnmBldfOahQibp9DNrA/640?wx_fmt=png&from=appmsg&tp=webp&wxfrom=5&wx_lazy=1" alt="图片 3" class="carousel-item">
+                    <img src="https://mmbiz.qpic.cn/mmbiz_png/zlD2iah6QpJhAAFbiaTo67bYVk6ttw2mJMhF44aTgdhZ4xibIeHIqcKgwpxCeG3SPoLC59jyIpRwbibxoJBqb4UUGw/640?wx_fmt=png&from=appmsg&tp=webp&wxfrom=5&wx_lazy=1" alt="图片 4" class="carousel-item">
+                    <img src="https://mmbiz.qpic.cn/mmbiz_png/zlD2iah6QpJhAAFbiaTo67bYVk6ttw2mJMEWZkV7fXAZhV64FGmTa2PXWLBWuN8K2yXiaXUJUQKl5YiaRILaI1AdZw/640?wx_fmt=png&from=appmsg&tp=webp&wxfrom=5&wx_lazy=1" alt="图片 5" class="carousel-item">
+                </div>
+                <div class="carousel-arrow left" onclick="plusSlides(3, 'carousel3')"><i class="fas fa-arrow-left"></i></div>
+                <div class="carousel-arrow right" onclick="plusSlides(3, 'carousel3')"><i class="fas fa-arrow-right"></i></div>
+            </div>
+            <i class="fas fa-times cursor-pointer absolute top-2 right-2" onclick="closeModal('modal3')"></i>
+        </div>
+    </div>
+
+    <!-- 类似地添加 modal4 到 modal8 -->
+
+    <div id="modal4" class="modal">
+        <div class="glass-card p-6 max-w-4xl">
+            <h2 class="text-xl font-semibold">四、聆听AI之声：语音AIGC，让声音传递更多可能</h2>
+            <p><strong>豆包APP</strong> <br>手机端支持语音输入需求，如介绍厦门大学或实时翻译，还包括AI绘图和英语口语陪练。</p>
+            <p><strong>腾讯智影</strong> <br>支持文本转语音，添加背景音乐、调整语速。</p>
+            <p><strong>米可智能</strong> <br>上传录音克隆声音，用于朗读任意文本，支持多种语言。</p>
+            <div class="carousel">
+                <div class="carousel-inner" id="carousel4">
+                    <img src="https://mmbiz.qpic.cn/mmbiz_png/zlD2iah6QpJhAAFbiaTo67bYVk6ttw2mJMdIk2mhDhbdk8JG1q5k33KC7iaQRh2uD8OMq4tibby4rZpWvk7AHuFfjg/640?wx_fmt=png&from=appmsg&tp=webp&wxfrom=5&wx_lazy=1" alt="图片 1" class="carousel-item">
+                    <img src="https://mmbiz.qpic.cn/mmbiz_png/zlD2iah6QpJhAAFbiaTo67bYVk6ttw2mJMdkfPoI0icRCic3HE5sCv8nBlLuX3iaPSb5XSpdC0LgPxYSw0oytG2Jo2g/640?wx_fmt=png&from=appmsg&tp=webp&wxfrom=5&wx_lazy=1" alt="图片 2" class="carousel-item">
+                    <img src="https://mmbiz.qpic.cn/mmbiz_png/zlD2iah6QpJhAAFbiaTo67bYVk6ttw2mJMneicgtcP5e1h2R7CtwSibP7s7Kzqiaox8B6OIibDpZqaqC6ianJFIjteic9w/640?wx_fmt=png&from=appmsg&tp=webp&wxfrom=5&wx_lazy=1" alt="图片 3" class="carousel-item">
+                </div>
+                <div class="carousel-arrow left" onclick="plusSlides(4, 'carousel4')"><i class="fas fa-arrow-left"></i></div>
+                <div class="carousel-arrow right" onclick="plusSlides(4, 'carousel4')"><i class="fas fa-arrow-right"></i></div>
+            </div>
+            <i class="fas fa-times cursor-pointer absolute top-2 right-2" onclick="closeModal('modal4')"></i>
+        </div>
+    </div>
+
+    <div id="modal5" class="modal">
+        <div class="glass-card p-6 max-w-4xl">
+            <h2 class="text-xl font-semipold">五、大片既视感：视频AIGC，开启视觉叙事新篇章</h2>
+            <p><strong>代表性工具</strong> <br>可灵AI、Vidu视界等能实现文生视频和图生视频。</p>
+            <p><strong>副标题:可灵AI</strong> <br>输入场景描述生成电影级短视频。</p>
+            <p><strong>即梦AI</strong> <br>先作图再生成视频，添加动作和配乐。</p>
+            <p><strong>腾讯智影</strong> <br>上传PPT生成数字人播报视频。</p>
+            <div class="carousel">
+                <div class="carousel-inner" id="carousel5">
+                    <img src="https://mmbiz.qpic.cn/mmbiz_png/zlD2iah6QpJhAAFbiaTo67bYVk6ttw2mJMnRP7l2VU4tiaPNJRf7cicnia9sfY2iaDaxwuYHqBTkAtG85lKW9T1Fw8uA/640?wx_fmt=png&from=appmsg&tp=webp&wxfrom=5&wx_lazy=1" alt="图片 1" class="carousel-item">
+                    <img src="https://mmbiz.qpic.cn/mmbiz_png/zlD2iah6QpJhAAFbiaTo67bYVk6ttw2mJMKHABicvTEsb7wawgohZVZvHF0QWiclZJ63wIwJBAvAPicIKupYzTWDTiaw/640?wx_fmt=png&from=appmsg&tp=webp&wxfrom=5&wx_lazy=1" alt="图片 2" class="carousel-item">
+                    <img src="https://mmbiz.qpic.cn/mmbiz_png/zlD2iah6QpJhAAFbiaTo67bYVk6ttw2mJMI0dWujPkRPJWbCmxd7ibKSx9jvYaLxDvBUpoDBvnzWpQdywB7ibKDic8w/640?wx_fmt=png&from=appmsg&tp=webp&wxfrom=5&wx_lazy=1" alt="图片 3" class="carousel-item">
+                    <img src="https://mmbiz.qpic.cn/mmbiz_png/zlD2iah6QpJhAAFbiaTo67bYVk6ttw2mJMMo2EVLNzKf7OJguciasgibdicaN6Ry0mqib0iamfXdcWZY9JicZ4iaONVNJ1Q/640?wx_fmt=png&from=appmsg&tp=webp&wxfrom=5&wx_lazy=1" alt="图片 4" class="carousel-item">
+                    <img src="https://mmbiz.qpic.cn/mmbiz_png/zlD2iah6QpJhAAFbiaTo67bYVk6ttw2mJMADacwMCUiaKa2X5AevDX77xiaoJpmYEwp3tXU98OibOHNVUg9NVFJZ08w/640?wx_fmt=png&from=appmsg&tp=webp&wxfrom=5&wx_lazy=1" alt="图片 5" class="carousel-item">
+                    <img src="https://mmbiz.qpic.cn/mmbiz_png/zlD2iah6QpJhAAFbiaTo67bYVk6ttw2mJMnThRSZwZKjnVzBdBicnoaEeLqO3ibXM5uImwWod2LM9EKEFR0GIju3rQ/640?wx_fmt=png&from=appmsg&tp=webp&wxfrom=5&wx_lazy=1" alt="图片 6" class="carousel-item">
+                    <img src="https://mmbiz.qpic.cn/mmbiz_png/zlD2iah6QpJhAAFbiaTo67bYVk6ttw2mJM3C2ypaLYyvYvQHuoiaDcny1N8PXEtXtnsn31pZCicdAmjqA7W31ha2rg/640?wx_fmt=png&from=appmsg&tp=webp&wxfrom=5&wx_lazy=1" alt="图片 7" class="carousel-item">
+                    <img src="https://mmbiz.qpic.cn/mmbiz_png/zlD2iah6QpJhAAFbiaTo67bYVk6ttw2mJMLf822uUGLUiaK71Tr5H0EnqQGAJ7jTPD8ibZTmaJ45OKUBtRjArTSemQ/640?wx_fmt=png&from=appmsg&tp=webp&wxfrom=5&wx_lazy=1" alt="图片 8" class="carousel-item">
+                </div>
+                <div class="carousel-arrow left" onclick="plusSlides(5, 'carousel5')"><i class="fas fa-arrow-left"></i></div>
+                <div class="carousel-arrow right" onclick="plusSlides(5, 'carousel5')"><i class="fas fa-arrow-right"></i></div>
+            </div>
+            <i class="fas fa-times cursor-pointer absolute top-2 right-2" onclick="closeModal('modal5')"></i>
+        </div>
+    </div>
+
+    <div id="modal6" class="modal">
+        <div class="glass-card p-6 max-w-4xl">
+            <h2 class="text-xl font-semibold">六、编程好搭档：AIGC辅助编程，代码也能AI造</h2>
+            <p><strong>应用场景</strong> <br>代码自动生成、优化与重构、补全与提示。</p>
+            <p><strong>豆包</strong> <br>在AI编程模块输入需求，如编写Python代码。</p>
+            <p><strong>DeepSeek</strong> <br>生成特定场景的HTML动态演示代码。</p>
+            <div class="carousel">
+                <div class="carousel-inner" id="carousel6">
+                    <img src="https://mmbiz.qpic.cn/mmbiz_png/zlD2iah6QpJhAAFbiaTo67bYVk6ttw2mJMJsRJjKfAxVokNVcu3L42roozw4ueygFY2OwIWOemNptOLTgIOr79wQ/640?wx_fmt=png&from=appmsg&tp=webp&wxfrom=5&wx_lazy=1" alt="图片 1" class="carousel-item">
+                    <img src="https://mmbiz.qpic.cn/mmbiz_png/zlD2iah6QpJhAAFbiaTo67bYVk6ttw2mJM9pOtDTtFRXic1AymCcLleZL0JscOLTBy3DmQibWww3vpZ20xkvrdjgsA/640?wx_fmt=png&from=appmsg&tp=webp&wxfrom=5&wx_lazy=1" alt="图片 2" class="carousel-item">
+                    <img src="https://mmbiz.qpic.cn/mmbiz_png/zlD2iah6QpJhAAFbiaTo67bYVk6ttw2mJMGNKDvL4PCgGPJBiacRUtP3FRfW9pibHibtrIOMvlMtDo42KjRZwQGr3mg/640?wx_fmt=png&from=appmsg&tp=webp&wxfrom=5&wx_lazy=1" alt="图片 3" class="carousel-item">
+                    <img src="https://mmbiz.qpic.cn/mmbiz_png/zlD2iah6QpJhAAFbiaTo67bYVk6ttw2mJMFJMH5g6ZetQW4HNLXAwStHmExqCPP8Ikmib25UhLaWWdVvfALnElAfg/640?wx_fmt=png&from=appmsg&tp=webp&wxfrom=5&wx_lazy=1" alt="图片 4" class="carousel-item">
+                </div>
+                <div class="carousel-arrow left" onclick="plusSlides(6, 'carousel6')"><i class="fas fa-arrow-left"></i></div>
+                <div class="carousel-arrow right" onclick="plusSlides(6, 'carousel6')"><i class="fas fa-arrow-right"></i></div>
+            </div>
+            <i class="fas fa-times cursor-pointer absolute top-2 right-2" onclick="closeModal('modal6')"></i>
+        </div>
+    </div>
+
+    <div id="modal7" class="modal">
+        <div class="glass-card p-6 max-w-4xl">
+            <h2 class="text-xl font-semibold">七、搜索新纪元：AI搜索，给你更精准的答案</h2>
+            <p><strong>AI搜索</strong> <br>利用深度学习提供更精准的信息。</p>
+            <p><strong>纳米AI搜索</strong> <br>支持多种输入方式和慢思考模式。</p>
+            <div class="carousel">
+                <div class="carousel-inner" id="carousel7">
+                    <img src="https://mmbiz.qpic.cn/mmbiz_png/zlD2iah6QpJhAAFbiaTo67bYVk6ttw2mJMGdPARYjGk3ick2b07bsgokhYRYSD0eLVBwsfuOCyARtxZibYKegncCoQ/640?wx_fmt=png&from=appmsg&tp=webp&wxfrom=5&wx_lazy=1" alt="图片 1" class="carousel-item">
+                    <img src="https://mmbiz.qpic.cn/mmbiz_png/zlD2iah6QpJhAAFbiaTo67bYVk6ttw2mJMpP90rIkvFMJzpRQo9ibGk53nIzKpZQic2hNp4JtzeQyEwdFjsTMDyiaAQ/640?wx_fmt=png&from=appmsg&tp=webp&wxfrom=5&wx_lazy=1" alt="图片 2" class="carousel-item">
+                    <img src="https://mmbiz.qpic.cn/mmbiz_png/zlD2iah6QpJhAAFbiaTo67bYVk6ttw2mJMxSVahqPepd3JicKjEDapDbspxBhEfIMSSvt70qemAONjBvDR0khzb2w/640?wx_fmt=png&from=appmsg&tp=webp&wxfrom=5&wx_lazy=1" alt="图片 3" class="carousel-item">
+                    <img src="https://mmbiz.qpic.cn/mmbiz_png/zlD2iah6QpJhAAFbiaTo67bYVk6ttw2mJMALibErvkjGZBRGUOVb5c1NOVSzczLWG5JYNTEN7fK0McTjAFDZTUkaQ/640?wx_fmt=png&from=appmsg&tp=webp&wxfrom=5&wx_lazy=1" alt="图片 4" class="carousel-item">
+                </div>
+                <div class="carousel-arrow left" onclick="plusSlides(7, 'carousel7')"><i class="fas fa-arrow-left"></i></div>
+                <div class="carousel-arrow right" onclick="plusSlides(7, 'carousel7')"><i class="fas fa-arrow-right"></i></div>
+            </div>
+            <i class="fas fa-times cursor-pointer absolute top-2 right-2" onclick="closeModal('modal7')"></i>
+        </div>
+    </div>
+
+    <div id="modal8" class="modal">
+        <div class="glass-card p-6 max-w-4xl">
+            <h2 class="text-xl font-semibold">八、智能办公新体验：AI让工作更高效</h2>
+            <p><strong>WPS灵犀</strong> <br>具备AI写作、设计、阅读和数据助手功能，能一键生成PPT和进行AI搜索。</p>
+            <div class="carousel">
+                <div class="carousel-inner" id="carousel8">
+                    <img src="https://mmbiz.qpic.cn/mmbiz_png/zlD2iah6QpJhAAFbiaTo67bYVk6ttw2mJMXXovvtmsDvKxyAxaJ9YF50BGa0x82LLyf4PbANOKYS7KwuqjgGYfrw/640?wx_fmt=png&from=appmsg&tp=webp&wxfrom=5&wx_lazy=1" alt="图片 1" class="carousel-item">
+                    <img src="https://mmbiz.qpic.cn/mmbiz_gif/zlD2iah6QpJhAAFbiaTo67bYVk6ttw2mJMr2Udg7IR5LNzE3Z5Olibp22NDB9CTl8AW3YKjWtDdf87Vgvt25bXCyw/640?wx_fmt=gif&from=appmsg&tp=webp&wxfrom=5&wx_lazy=1" alt="图片 2" class="carousel-item">
+                </div>
+                <div class="carousel-arrow left" onclick="plusSlides(8, 'carousel8')"><i class="fas fa-arrow-left"></i></div>
+                <div class="carousel-arrow right" onclick="plusSlides(8, 'carousel8')"><i class="fas fa-arrow-right"></i></div>
+            </div>
+            <i class="fas fa-times cursor-pointer absolute top-2 right-2" onclick="closeModal('modal8')"></i>
+        </div>
+    </div>
+
+    <script>
+        // 滚动进度条 JS
+        window.onscroll = function() { updateProgress() };
+        function updateProgress() {
+            var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            var scrolled = (winScroll / height) * 100;
+            document.getElementById("progress").style.width = scrolled + "%";
+        }
+
+        // 模态框 JS
+        function openModal(id) {
+            document.getElementById(id).classList.add('active');
+            startCarousel();  // 启动轮播
+        }
+        function closeModal(id) {
+            document.getElementById(id).classList.remove('active');
+        }
+
+        // 轮播 JS
+        let slideIndex = [1, 1, 1, 1, 1, 1, 1, 1];  // 为每个轮播初始化索引
+        function plusSlides(n, carouselId) {
+            showSlides(slideIndex[carouselId - 1] += n, carouselId);
+        }
+        function showSlides(n, carouselId) {
+            const slides = document.querySelectorAll(`#${carouselId} .carousel-item`);
+            if (n > slides.length) slideIndex[carouselId - 1] = 1;
+            if (n < 1) slideIndex[carouselId - 1] = slides.length;
+            const carouselInner = document.getElementById(carouselId);
+            carouselInner.style.transform = `translateX(-${(slideIndex[carouselId - 1] - 1) * 100}%)`;
+        }
+        function startCarousel() {
+            setInterval(() => {
+                for (let i = 1; i <= 8; i++) {
+                    plusSlides(1, 'carousel' + i);
+                }
+            }, 5000);
+        }
+    </script>
+</body>
+</html>
