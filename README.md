@@ -26,7 +26,8 @@ Fork来自https://github.com/miusing/muse-home
 
 ![预览图](./assets/images/preview.png)
 
-![muse版-预览图](./assets/images/preview.png)
+## 📷 muse版-预览图
+![muse版-预览图](./assets/images/preview-muse.png)
 
 ## ☁️ 一键部署
 
