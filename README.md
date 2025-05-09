@@ -1,5 +1,6 @@
 # 个人主页模板
 Fork来自https://github.com/miusing/muse-home
+通过Tailwind CSS 和 Font Awesome 重新构建
 
 ![License](https://img.shields.io/badge/license-MIT-blue)
 ![HTML](https://img.shields.io/badge/HTML-5-orange)
@@ -24,6 +25,8 @@ Fork来自https://github.com/miusing/muse-home
 ## 📷 预览
 
 ![预览图](./assets/images/preview.png)
+
+![muse版-预览图](./assets/images/preview.png)
 
 ## ☁️ 一键部署
 
@@ -87,7 +90,8 @@ Fork来自https://github.com/miusing/muse-home
 │           └── utils.js       # 工具函数
 ├── public/              # 公共资源
 │   └── 404.html         # 404页面
-├── index.html           # 主页面
+├── index.html           # bozo版主页面
+├── index-muse.html      # muse版主页面
 ├── README.md            # 项目说明
 ├── CONTRIBUTING.md      # 贡献指南
 ├── LICENSE              # 许可证文件

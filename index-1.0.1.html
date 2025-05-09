@@ -191,23 +191,6 @@
         opacity: 1;
         transform: translateY(0);
       }
-      .skill-item {
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.skill-item:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-}
-
-.tech-item {
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.tech-item:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-}
     }
   </style>
 </head>
@@ -257,9 +240,9 @@
       <!-- 个人资料部分 -->
       <div class="relative p-8 md:p-12 bg-gradient-to-r from-primary/20 to-secondary/20">
         <div class="profile text-center">
-          <div class="avatar mx-auto w-32 h-32 rounded-full overflow-hidden border-4 border-white/20 shadow-lg mb-6 transform transition-all duration-300 hover:scale-110 animate-float">
-  <img src="assets/images/Bozoyan.png" alt="个人头像" class="w-full h-full object-cover">
-</div>
+          <div class="avatar mx-auto w-32 h-32 rounded-full overflow-hidden border-4 border-white/20 shadow-lg mb-6">
+            <img src="assets/images/Bozoyan.png" alt="个人头像" class="w-full h-full object-cover">
+          </div>
           <h1 class="text-[clamp(2rem,5vw,3rem)] font-bold mb-2 tracking-tight">BOZOYAN</h1>
           <p class="title text-xl text-white/80 mb-4 flex items-center justify-center">
             <i class="fas fa-code mr-2 text-primary"></i>
@@ -423,46 +406,44 @@
           <div class="widget-decoration-line h-[calc(100%-15px)]"></div>
         </div>
         <div class="projects-widget card-hover glass-effect rounded-xl p-6 md:p-8 shadow-lg">
-  <div class="widget-header flex items-center mb-6">
-    <div class="widget-icon projects-icon text-3xl text-primary mr-4">
-      <i class="fa fa-laptop-code"></i>
-    </div>
-    <h2 class="text-2xl font-bold">项目经验</h2>
-  </div>
-  <div class="widget-content">
-    <div class="projects-dropdown relative">
-      <div class="project-list-container max-h-[280px] overflow-hidden transition-all duration-500" id="projects-container">
-        <div class="projects-list space-y-6">
-          <!-- 前3个项目保持可见 -->
-          <div class="project-item flex items-start p-4 bg-white/5 rounded-lg hover:bg-white/10 transition-colors cursor-pointer">
-            <div class="project-icon text-2xl text-primary mr-4 mt-1">
-              <i class="fas fa-database"></i>
+          <div class="widget-header flex items-center mb-6">
+            <div class="widget-icon projects-icon text-3xl text-primary mr-4">
+              <i class="fa fa-laptop-code"></i>
             </div>
-            <div class="project-info">
-              <h3 class="text-xl font-semibold mb-2">基于 Dify 框架的医疗 RAG 问答系统</h3>
-              <p class="text-white/70 leading-relaxed">构建医疗领域知识库问答系统，整合专业医学文献和病例资料，支持医生进行精准诊断参考和治疗方案查询，提高临床决策效率。</p>
-            </div>
+            <h2 class="text-2xl font-bold">项目经验</h2>
           </div>
-          
-          <div class="project-item flex items-start p-4 bg-white/5 rounded-lg hover:bg-white/10 transition-colors cursor-pointer">
-            <div class="project-icon text-2xl text-primary mr-4 mt-1">
-              <i class="fas fa-leaf"></i>
-            </div>
-            <div class="project-info">
-              <h3 class="text-xl font-semibold mb-2">基于 Dify 框架的环保行业火电 RAG 问答系统</h3>
-              <p class="text-white/70 leading-relaxed">为环保行业开发专业知识库，整合火电产业相关政策法规和技术标准，帮助从业人员快速解答监管合规问题，辅助环保决策。</p>
-            </div>
-          </div>
-          
-          <div class="project-item flex items-start p-4 bg-white/5 rounded-lg hover:bg-white/10 transition-colors cursor-pointer">
-            <div class="project-icon text-2xl text-primary mr-4 mt-1">
-              <i class="fas fa-chain"></i>
-            </div>
-            <div class="project-info">
-              <h3 class="text-xl font-semibold mb-2">基于 Langchain + OpenAI API 构建的RAG QA问答对生成系统</h3>
-              <p class="text-white/70 leading-relaxed">开发智能问答对生成系统，通过检索增强技术自动创建高质量训练数据，大幅提升模型在特定领域的问答精度，降低数据标注成本。</p>
-            </div>
-          </div>
+          <div class="widget-content">
+            <div class="projects-list space-y-6">
+              <!-- 项目列表 -->
+              <div class="project-item flex items-start p-4 bg-white/5 rounded-lg">
+                <div class="project-icon text-2xl text-primary mr-4 mt-1">
+                  <i class="fas fa-database"></i>
+                </div>
+                <div class="project-info">
+                  <h3 class="text-xl font-semibold mb-2">基于 Dify 框架的医疗 RAG 问答系统</h3>
+                  <p class="text-white/70 leading-relaxed">构建医疗领域知识库问答系统，整合专业医学文献和病例资料，支持医生进行精准诊断参考和治疗方案查询，提高临床决策效率。</p>
+                </div>
+              </div>
+              
+              <div class="project-item flex items-start p-4 bg-white/5 rounded-lg">
+                <div class="project-icon text-2xl text-primary mr-4 mt-1">
+                  <i class="fas fa-leaf"></i>
+                </div>
+                <div class="project-info">
+                  <h3 class="text-xl font-semibold mb-2">基于 Dify 框架的环保行业火电 RAG 问答系统</h3>
+                  <p class="text-white/70 leading-relaxed">为环保行业开发专业知识库，整合火电产业相关政策法规和技术标准，帮助从业人员快速解答监管合规问题，辅助环保决策。</p>
+                </div>
+              </div>
+              
+              <div class="project-item flex items-start p-4 bg-white/5 rounded-lg">
+                <div class="project-icon text-2xl text-primary mr-4 mt-1">
+                  <i class="fas fa-chain"></i>
+                </div>
+                <div class="project-info">
+                  <h3 class="text-xl font-semibold mb-2">基于 Langchain + OpenAI API 构建的RAG QA问答对生成系统</h3>
+                  <p class="text-white/70 leading-relaxed">开发智能问答对生成系统，通过检索增强技术自动创建高质量训练数据，大幅提升模型在特定领域的问答精度，降低数据标注成本。</p>
+                </div>
+              </div>
               
               <!-- 默认隐藏的项目 -->
               <div class="project-item hidden-project flex items-start p-4 bg-white/5 rounded-lg">
@@ -564,19 +545,17 @@
                   <p class="text-white/70 leading-relaxed">开发基于机器学习的胃癌检测与预后预测系统，通过特征工程筛选关键特征，采用GBDT、随机森林等集成模型实现早期诊断。</p>
                 </div>
               </div>
-              <!-- 其他隐藏项目... -->
+            </div>
+            
+            <div class="projects-toggle mt-8 text-center">
+              <button class="toggle-projects-btn glass-effect-dark hover:bg-primary/80 transition-all duration-300 px-6 py-3 rounded-lg text-white inline-flex items-center">
+                <span class="show-more"><i class="fas fa-chevron-down mr-2"></i> 查看更多项目</span>
+                <span class="show-less hidden"><i class="fas fa-chevron-up mr-2"></i> 收起项目列表</span>
+              </button>
+            </div>
+          </div>
         </div>
       </div>
-      
-      <div class="projects-toggle mt-6 text-center">
-        <button class="toggle-projects-btn glass-effect-dark hover:bg-primary/80 transition-all duration-300 px-6 py-3 rounded-lg text-white inline-flex items-center" id="toggle-projects">
-          <span class="show-more"><i class="fas fa-chevron-down mr-2"></i> 查看更多项目</span>
-          <span class="show-less hidden"><i class="fas fa-chevron-up mr-2"></i> 收起项目列表</span>
-        </button>
-      </div>
-    </div>
-  </div>
-</div>
       
       <!-- 个人产品 小组件 -->
       <div class="relative p-8 md:p-12">
@@ -621,17 +600,17 @@
       <div class="modal-body p-6">
         <div class="social-items space-y-4">
           <div class="social-item flex items-center p-4 glass-effect rounded-lg">
-  <div class="social-icon w-12 h-12 rounded-full flex items-center justify-center bg-primary/20 text-primary text-xl">
-    <i class="fab fa-weixin"></i>
-  </div>
-  <div class="social-info ml-4">
-    <h4 class="font-medium">微信</h4>
-    <p class="text-white/70">bozoyan</p>
-  </div>
-  <button class="wechat-copy-btn ml-auto px-3 py-1 glass-effect rounded text-sm text-white/80 hover:text-white transition-colors">
-    <i class="fas fa-copy mr-1"></i> 复制
-  </button>
-</div>
+            <div class="social-icon w-12 h-12 rounded-full flex items-center justify-center bg-primary/20 text-primary text-xl">
+              <i class="fab fa-weixin"></i>
+            </div>
+            <div class="social-info ml-4">
+              <h4 class="font-medium">微信</h4>
+              <p class="text-white/70">bozoyan</p>
+            </div>
+            <div class="social-qrcode ml-auto">
+              <img src="assets/images/wechat_qr.png" alt="微信二维码" class="w-16 h-16 rounded-lg">
+            </div>
+          </div>
           
           <div class="social-item flex items-center p-4 glass-effect rounded-lg">
             <div class="social-icon w-12 h-12 rounded-full flex items-center justify-center bg-primary/20 text-primary text-xl">
@@ -681,120 +660,95 @@
   <!-- JavaScript -->
   <script>
     // 滚动进度条
-window.addEventListener('scroll', function() {
-  const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
-  const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-  const scrolled = (winScroll / height) * 100;
-  document.querySelector('.progress-bar').style.width = scrolled + '%';
-});
+    window.addEventListener('scroll', function() {
+      const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+      const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const scrolled = (winScroll / height) * 100;
+      document.querySelector('.progress-bar').style.width = scrolled + '%';
+    });
 
-// 项目下拉菜单
-const toggleBtn = document.getElementById('toggle-projects');
-const projectsContainer = document.getElementById('projects-container');
-const showMoreText = document.querySelector('.show-more');
-const showLessText = document.querySelector('.show-less');
-const parentElement = document.querySelector('.projects-dropdown');
-
-toggleBtn.addEventListener('click', function() {
-  if (parentElement.classList.contains('projects-expanded')) {
-    // 收起项目列表
-    parentElement.classList.remove('projects-expanded');
-    showMoreText.classList.remove('hidden');
-    showLessText.classList.add('hidden');
-    projectsContainer.style.maxHeight = '280px';
-  } else {
-    // 展开项目列表
-    parentElement.classList.add('projects-expanded');
-    showMoreText.classList.add('hidden');
-    showLessText.classList.remove('hidden');
-    // 设置足够大的高度以显示所有项目
-    projectsContainer.style.maxHeight = '2000px';
-  }
-});
-
-// 社交媒体弹窗控制
-const modal = document.getElementById('social-modal');
-const openBtn = document.querySelector('.subscribe-btn');
-const closeBtn = document.querySelector('.close');
-const toast = document.querySelector('.toast');
-
-openBtn.addEventListener('click', function() {
-  modal.classList.add('active');
-  document.body.style.overflow = 'hidden';
-});
-
-closeBtn.addEventListener('click', function() {
-  modal.classList.remove('active');
-  document.body.style.overflow = 'auto';
-});
-
-// 点击模态框外部关闭
-modal.addEventListener('click', function(e) {
-  if (e.target === modal) {
-    modal.classList.remove('active');
-    document.body.style.overflow = 'auto';
-  }
-});
-
-// 微信复制功能
-const wechatCopyBtn = document.querySelector('.wechat-copy-btn');
-
-wechatCopyBtn.addEventListener('click', function() {
-  const wechatId = 'bozoyan';
-  navigator.clipboard.writeText(wechatId).then(function() {
-    showToast();
-  }).catch(function(err) {
-    console.error('复制失败: ', err);
-  });
-});
-
-// 复制邮箱功能
-const copyBtn = document.querySelector('.copy-btn');
-
-copyBtn.addEventListener('click', function() {
-  const email = 'yanbo@qq.com';
-  navigator.clipboard.writeText(email).then(function() {
-    showToast();
-  }).catch(function(err) {
-    console.error('复制失败: ', err);
-  });
-});
-
-// 显示复制成功提示
-function showToast() {
-  toast.classList.add('show');
-  setTimeout(function() {
-    toast.classList.remove('show');
-  }, 3000);
-}
-
-// 元素滚动动画
-const animateOnScroll = function() {
-  const elements = document.querySelectorAll('.card-hover');
-  
-  elements.forEach(element => {
-    const elementPosition = element.getBoundingClientRect().top;
-    const screenPosition = window.innerHeight / 1.3;
+    // 模态框控制
+    const modal = document.getElementById('social-modal');
+    const openBtn = document.querySelector('.subscribe-btn');
+    const closeBtn = document.querySelector('.close');
     
-    if (elementPosition < screenPosition) {
-      element.classList.add('animate-fade-in');
-    }
-  });
-};
+    openBtn.addEventListener('click', function() {
+      modal.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    });
+    
+    closeBtn.addEventListener('click', function() {
+      modal.classList.remove('active');
+      document.body.style.overflow = 'auto';
+    });
+    
+    // 点击模态框外部关闭
+    modal.addEventListener('click', function(e) {
+      if (e.target === modal) {
+        modal.classList.remove('active');
+        document.body.style.overflow = 'auto';
+      }
+    });
 
-// 初始加载动画
-window.addEventListener('load', function() {
-  animateOnScroll();
-  
-  // 为头像添加浮动动画
-  document.querySelector('.avatar').classList.add('animate-float');
-  
-  // 修复GitHub链接
-  document.querySelector('.social-item:nth-child(2) .social-info p').textContent = 'https://github.com/bozoyan';
-});
+    // 项目切换
+    const toggleBtn = document.querySelector('.toggle-projects-btn');
+    const projectsContainer = document.querySelector('.projects-list');
+    const showMoreText = document.querySelector('.show-more');
+    const showLessText = document.querySelector('.show-less');
+    
+    toggleBtn.addEventListener('click', function() {
+      projectsContainer.parentElement.classList.toggle('projects-expanded');
+      
+      if (projectsContainer.parentElement.classList.contains('projects-expanded')) {
+        showMoreText.classList.add('hidden');
+        showLessText.classList.remove('hidden');
+      } else {
+        showMoreText.classList.remove('hidden');
+        showLessText.classList.add('hidden');
+      }
+    });
 
-// 滚动时执行动画
-window.addEventListener('scroll', animateOnScroll);
+    // 复制邮箱功能
+    const copyBtn = document.querySelector('.copy-btn');
+    const toast = document.querySelector('.toast');
+    
+    copyBtn.addEventListener('click', function() {
+      const email = 'bozoyan@example.com';
+      navigator.clipboard.writeText(email).then(function() {
+        // 显示提示
+        toast.classList.add('show');
+        
+        // 3秒后隐藏提示
+        setTimeout(function() {
+          toast.classList.remove('show');
+        }, 3000);
+      });
+    });
+
+    // 元素滚动动画
+    const animateOnScroll = function() {
+      const elements = document.querySelectorAll('.card-hover');
+      
+      elements.forEach(element => {
+        const elementPosition = element.getBoundingClientRect().top;
+        const screenPosition = window.innerHeight / 1.3;
+        
+        if (elementPosition < screenPosition) {
+          element.classList.add('animate-fade-in');
+        }
+      });
+    };
+
+    // 初始加载动画
+    window.addEventListener('load', function() {
+      animateOnScroll();
+      
+      // 为头像添加浮动动画
+      document.querySelector('.avatar').classList.add('animate-float');
+    });
+
+    // 滚动时执行动画
+    window.addEventListener('scroll', animateOnScroll);
   </script>
 </body>
 </html>
